@@ -10,6 +10,8 @@ Plug 'editorconfig/editorconfig-vim'
 " GUI enhancements
 Plug 'itchyny/lightline.vim'
 Plug 'machakann/vim-highlightedyank'
+Plug 'RRethy/nvim-base16'
+
 
 " Fuzzy finder
 Plug 'airblade/vim-rooter'
@@ -40,30 +42,30 @@ Plug 'plasticboy/vim-markdown'
 
 
 " To enable more of the features of rust-analyzer, such as inlay hints and more!
-" Plug 'simrat39/rust-tools.nvim'
+Plug 'simrat39/rust-tools.nvim'
 
 call plug#end()
 
 " deal with colors
-if !has('gui_running')
-  set t_Co=256
-endif
-if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
+" if !has('gui_running')
+"  set t_Co=256
+"endif
+"if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
   " screen does not (yet) support truecolor
-  set termguicolors
-endif
-set background=dark
-let base16colorspace=256
+"  set termguicolors
+" endif
+" set background=dark
+" let base16colorspace=256
 "" let g:base16_shell_path="~/dev/others/base16/templates/shell/scripts/"
-colorscheme base16-gruvbox-dark-hard
-syntax on
-hi Normal ctermbg=NONE
+colorscheme base16-monokai
+" syntax on
+" hi Normal ctermbg=NONE
 
 " Customize the highlight a bit.
 " Make comments more prominent -- they are important.
-call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
+" call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
 " Make it clearly visible which argument we're at.
-call Base16hi("LspSignatureActiveParameter", g:base16_gui05, g:base16_gui03, g:base16_cterm05, g:base16_cterm03, "bold", "")
+" call Base16hi("LspSignatureActiveParameter", g:base16_gui05, g:base16_gui03, g:base16_cterm05, g:base16_cterm03, "bold", "")
 
 " LSP configuration
 lua << END
@@ -78,8 +80,8 @@ cmp.setup({
     end,
   },
   mapping = {
-    -- Tab immediately completes. C-n/C-p to select.
-    -- ['<Tab>'] = cmp.mapping.confirm({ select = true })
+   -- Tab immediately completes. C-n/C-p to select.
+    ['<Tab>'] = cmp.mapping.confirm({ select = true })
   },
   sources = cmp.config.sources({
     -- TODO: currently snippets from lsp end up getting prioritized -- stop that!
